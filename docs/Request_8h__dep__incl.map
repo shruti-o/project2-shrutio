@@ -1,0 +1,9 @@
+<map id="src/Request.h" name="src/Request.h">
+<area shape="rect" id="node1" title=" " alt="" coords="164,5,275,32"/>
+<area shape="rect" id="node2" href="$LoadBalancer_8h.html" title=" " alt="" coords="90,155,234,181"/>
+<area shape="rect" id="node5" href="$Request_8cpp.html" title="Implementation of the Request class." alt="" coords="157,80,282,107"/>
+<area shape="rect" id="node6" href="$WebServer_8h.html" title=" " alt="" coords="307,80,433,107"/>
+<area shape="rect" id="node3" href="$LoadBalancer_8cpp.html" title="Implementation of a dynamic load balancer simulation for web servers." alt="" coords="5,229,164,256"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title="Implementation of the user facing logic that runs loadbalancer. This file contains the main function ..." alt="" coords="188,229,293,256"/>
+<area shape="rect" id="node7" href="$WebServer_8cpp.html" title="Implementation of the WebServer class used by the load balancer." alt="" coords="299,155,441,181"/>
+</map>

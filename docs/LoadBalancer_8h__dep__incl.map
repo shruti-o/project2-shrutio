@@ -1,0 +1,5 @@
+<map id="src/LoadBalancer.h" name="src/LoadBalancer.h">
+<area shape="rect" id="node1" title=" " alt="" coords="90,5,234,32"/>
+<area shape="rect" id="node2" href="$LoadBalancer_8cpp.html" title="Implementation of a dynamic load balancer simulation for web servers." alt="" coords="5,80,164,107"/>
+<area shape="rect" id="node3" href="$main_8cpp.html" title="Implementation of the user facing logic that runs loadbalancer. This file contains the main function ..." alt="" coords="188,80,293,107"/>
+</map>
