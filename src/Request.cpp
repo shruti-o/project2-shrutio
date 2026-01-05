@@ -1,5 +1,22 @@
+/**
+ * @file Request.cpp
+ * @brief Implementation of the Request class.
+ *
+ * This file implements the Request class, which represents
+ * a single client request handled by the load balancer.
+ */
+
 #include "Request.h"
 #include <string>
+
+/**
+ * @class Request
+ * @brief Represents a single request entering the load balancer.
+ *
+ * Each request includes source and destination IP addresses,
+ * a processing time measured in clock cycles, a job type
+ * (streaming or processing), and an arrival timestamp.
+ */
 
 /**
  * @brief Constructs a Request object.

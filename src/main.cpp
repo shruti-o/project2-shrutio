@@ -1,3 +1,10 @@
+/**
+ * @file main.cpp
+ * @brief Implementation of the user facing logic that runs loadbalancer.
+ * This file contains the main function which prompts the user for
+ * simulation parameters, initializes the LoadBalancer, and starts
+ * the simulation.
+ */
 #include <iostream>
 #include "LoadBalancer.h"
 
