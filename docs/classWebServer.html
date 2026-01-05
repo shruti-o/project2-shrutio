@@ -142,7 +142,6 @@ Private Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Unique identifier for the server</td></tr>
-    <tr><td class="paramname">id</td><td>Unique identifier for this server.</td></tr>
   </table>
   </dd>
 </dl>
@@ -175,8 +174,6 @@ Private Attributes</h2></td></tr>
 <p>Returns the request currently being processed. </p>
 <dl class="section return"><dt>Returns</dt><dd>The active <a class="el" href="classRequest.html" title="Represents a single request handled by the load balancer.">Request</a></dd>
 <dd>
-Current <a class="el" href="classRequest.html" title="Represents a single request handled by the load balancer.">Request</a> object.</dd>
-<dd>
 The active <a class="el" href="classRequest.html" title="Represents a single request handled by the load balancer.">Request</a> object. </dd></dl>
 
 </div>
@@ -198,10 +195,7 @@ The active <a class="el" href="classRequest.html" title="Represents a single req
 
 <p>Returns remaining processing time. </p>
 <p>Gets the remaining processing time for the current request.</p>
-<p>Returns the number of clock cycles remaining for the current request.</p>
 <dl class="section return"><dt>Returns</dt><dd>Time remaining in clock cycles</dd>
-<dd>
-Time remaining for the request.</dd>
 <dd>
 Number of clock cycles remaining. </dd></dl>
 
@@ -224,9 +218,7 @@ Number of clock cycles remaining. </dd></dl>
 
 <p>Processes one clock cycle. </p>
 <p>Advances request processing by one clock cycle.</p>
-<p>Handles one clock cycle of processing.</p>
 <p>Decrements remaining processing time and frees the server when the request finishes.</p>
-<p>Decrements the time remaining for the current request, and sets the server to available if the request is complete.</p>
 <p>Decrements the remaining processing time if the server is busy. When processing completes, the server becomes available again. </p>
 
 </div>
@@ -248,10 +240,7 @@ Number of clock cycles remaining. </dd></dl>
 
 <p>Checks whether the server is available. </p>
 <p>Checks whether the web server is currently available.</p>
-<p>Checks if the server is available for processing a new request.</p>
 <dl class="section return"><dt>Returns</dt><dd>true if the server is idle</dd>
-<dd>
-true if the server is available, false otherwise.</dd>
 <dd>
 true if the server is idle and can accept a request, false if it is currently processing a request. </dd></dl>
 
@@ -275,11 +264,9 @@ true if the server is idle and can accept a request, false if it is currently pr
 
 <p>Assigns a request to the server for processing. </p>
 <p>Assigns a request to the web server for processing.</p>
-<p>Assigns a request to this server and starts processing it.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">request</td><td>The request to process</td></tr>
-    <tr><td class="paramname">request</td><td><a class="el" href="classRequest.html" title="Represents a single request handled by the load balancer.">Request</a> to process.</td></tr>
   </table>
   </dd>
 </dl>
@@ -384,7 +371,6 @@ true if the server is idle and can accept a request, false if it is currently pr
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="WebServer_8h_source.html">WebServer.h</a></li>
-<li>src/<a class="el" href="LoadBalancer_8cpp.html">LoadBalancer.cpp</a></li>
 <li>src/<a class="el" href="WebServer_8cpp.html">WebServer.cpp</a></li>
 </ul>
 </div><!-- contents -->
