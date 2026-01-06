@@ -34,8 +34,16 @@ LoadBalancer::LoadBalancer(int numServers, int runTime)
     createWebServers(numServers);
     populateReqQueue(numServers);
 
-    logFile.open("loadbalancer.log");
-    logFile << "Clock,Servers,QueueSize,Processed,Blocked\n";
+    logFile.open("log.txt");
+    logFile << "===== LOAD BALANCER SIMULATION START =====\n";
+    logFile << "Initial Servers: " << numServers << "\n";
+    logFile << "Planned Clock Cycles: " << runTime << "\n";
+    logFile << "Initial Queue Size: " << requestQueue.size() << "\n";
+    logFile << "Task Time Ranges:\n";
+    logFile << "Streaming Jobs: " << STREAM_MIN << "-" << STREAM_MAX << " cycles\n";
+    logFile << "Processing Jobs: " << PROC_MIN << "-" << PROC_MAX << " cycles\n";
+    logFile << "=========================================\n\n";
+
 }
 
 /**
@@ -83,7 +91,10 @@ Request LoadBalancer::genRandReq() {
     std::string ipOut = generate_IP();
 
     bool isStreaming = (rand() % 2 == 0);
-    int processingTime = isStreaming ? (rand() % 4 + 10) : (rand() % 11 + 20);
+    int processingTime = isStreaming
+    ? (rand() % (4) + 12)
+    : (rand() % (11) + 30);
+
 
     return Request(ipIn, ipOut, isStreaming, processingTime, currentClockCycle);
 }
@@ -95,8 +106,10 @@ Request LoadBalancer::genRandReq() {
  * @return true if the IP is blocked, false otherwise.
  */
 bool LoadBalancer::isBlockedIP(const std::string& ip) {
-    return ip.rfind("192.", 0) == 0; // Example blocked range: 192.*.*.*
+    int firstOctet = std::stoi(ip.substr(0, ip.find('.')));
+    return firstOctet >= 192 && firstOctet <= 200;
 }
+
 
 /**
  * @brief Dynamically scales the number of servers based on the queue size.
@@ -116,10 +129,16 @@ void LoadBalancer::scaleServers() {
     if (queueSize > 25 * numServers) {
         webServers.emplace_back(numServers);
         scaleCooldown = SCALE_WAIT;
+        logFile << "[Cycle " << currentClockCycle << "] "
+            << "SCALE UP: Added server. Total servers = "
+            << webServers.size() << "\n";
     } 
     else if (queueSize < 15 * numServers && numServers > 1) {
         webServers.pop_back();
         scaleCooldown = SCALE_WAIT;
+        logFile << "[Cycle " << currentClockCycle << "] "
+                << "SCALE DOWN: Removed server. Total servers = "
+                << webServers.size() << "\n";
     }
 }
 
@@ -160,9 +179,9 @@ void LoadBalancer::Run() {
         }
 
         scaleServers();
-        logState();
 
         if (currentClockCycle % 50 == 0) {
+            logState();
             printSummary();
         }
     }
@@ -173,11 +192,13 @@ void LoadBalancer::Run() {
     std::cout << "Requests Processed: " << totalRequestsProcessed << "\n";
     std::cout << "Blocked Requests: " << blockedRequests << "\n";
 
-    logFile << "Simulation complete\n";
-    logFile << "Initial Servers: " << initialNumServers << "\n";
+    logFile << "\n===== SIMULATION END =====\n";
+    logFile << "Ending Queue Size: " << requestQueue.size() << "\n";
     logFile << "Final Servers: " << webServers.size() << "\n";
-    logFile << "Requests Processed: " << totalRequestsProcessed << "\n";
-    logFile << "Blocked Requests: " << blockedRequests << "\n";
+    logFile << "Total Requests Processed: " << totalRequestsProcessed << "\n";
+    logFile << "Total Blocked Requests: " << blockedRequests << "\n";
+    logFile << "==========================\n";
+
 
     logFile.close();
 }
